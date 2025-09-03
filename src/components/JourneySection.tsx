@@ -9,6 +9,7 @@ const JourneySection = () => {
 
   // Carousel images (add your image filenames in public/)
   const images = [
+    '/image.png',
     '/img1.jpg',
     '/img2.jpg',
     '/img3.jpg',
@@ -113,7 +114,7 @@ const JourneySection = () => {
               <p>
                 What started as a personal battle with self-doubt and an out-of-shape body 
                 became a complete life transformation. After years of failed attempts and 
-                cookie-cutter programs, I discovered the science behind sustainable results.
+                cookie-cutter programs,As I competed in ICN Bangalore ,Learn discipline built myself through pain and hardwork ,Ill work hard on next competetion and gotta win.
               </p>
               
               <p>

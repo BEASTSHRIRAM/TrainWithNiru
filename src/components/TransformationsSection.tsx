@@ -9,6 +9,14 @@ const TransformationsSection = () => {
 
   const transformations = [
     {
+       images: ['/img10.jpg', '/img2.jpg' /* , '/your-extra-image.jpg' */],
+      client: '',
+      result: 'From Heavy Bulk to Muscular ,Never gave up on myself',
+      testimonial: 'It wasnt easy worked hard for it never skipped gym.',
+      stats: 'Competed at ICN,Bangalore'
+
+    },
+    {
       images: [transform1],
       client: '',
       result: 'Dropped 4kg in 3 weeks',
@@ -22,6 +30,7 @@ const TransformationsSection = () => {
       testimonial: 'I never thought I could feel this strong. Every session was motivating and tailored to my needs.',
       stats: 'Strength doubled • Confidence boosted • Healthier lifestyle'
     },
+    
   ];
 
   return (
