@@ -324,8 +324,9 @@ const ApplicationForm = () => {
                     required
                   >
                     <option value="">Select your budget range</option>
-                    <option value="500-1000">4000/3-month</option>
-                    <option value="1000-2000">7000/6-month</option>
+                    <option value="4000">4000/month</option>
+                    <option value="7000">7000/2-months</option>
+                    <option value="10000">10000/3-months</option>
                     <option value="discuss">Let's discuss</option>
                   </select>
                 </div>
