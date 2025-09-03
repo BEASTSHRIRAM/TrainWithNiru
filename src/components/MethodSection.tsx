@@ -15,17 +15,6 @@ const MethodSection = () => {
       ]
     },
     {
-      icon: Utensils,
-      title: 'Science-Based Nutrition',
-      description: 'No fads. Just sustainable, effective nutrition plans that fuel your transformation.',
-      features: [
-        'Macro-nutrient optimization',
-        'Metabolic flexibility training',
-        'Meal timing strategies',
-        'Supplement guidance'
-      ]
-    },
-    {
       icon: MessageCircle,
       title: '24/7 Accountability',
       description: 'Constant support through direct messaging and weekly check-ins. You\'re never alone.',
