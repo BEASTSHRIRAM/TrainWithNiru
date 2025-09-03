@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 const JourneySection = () => {
   const stats = [
-    {label: ' 8 Years Experience' },
+    {label: ' 3 Years Experience' },
     {label: 'Transforming My Clients' },
     {label: 'Guaranteed Results ' },
   ];
@@ -130,9 +130,7 @@ const JourneySection = () => {
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 { title: 'Results-Driven', desc: 'Every program is designed for measurable outcomes' },
-                { title: 'Evidence-Based', desc: 'Science-backed methods, not fitness trends' },
                 { title: 'Personalized', desc: 'Your unique body, goals, and lifestyle matter' },
-                { title: 'Sustainable', desc: 'Long-term habits that create lasting change' },
               ].map((point, index) => (
                 <div key={index} className="bg-background border border-border rounded-lg p-4">
                   <h4 className="font-montserrat font-bold text-primary mb-2">

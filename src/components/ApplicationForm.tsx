@@ -7,6 +7,7 @@ const ApplicationForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+  mobile: '',
     age: '',
     bodyweight: '',
     height: '',
@@ -57,7 +58,7 @@ const ApplicationForm = () => {
   };
 
   // WhatsApp message generator
-  const whatsappNumber = '9902554790';
+  const whatsappNumber = '+919902554790';
   const whatsappMessage = encodeURIComponent(
     `New Application:\n` +
     Object.entries(formData).map(([k, v]) => `${k}: ${v}`).join('\n')
@@ -155,6 +156,18 @@ const ApplicationForm = () => {
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
                       className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary transition-smooth"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-foreground font-medium mb-2">Mobile Number *</label>
+                    <input
+                      type="tel"
+                      inputMode="tel"
+                      value={formData.mobile}
+                      onChange={(e) => handleInputChange('mobile', e.target.value)}
+                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground focus:border-primary focus:ring-1 focus:ring-primary transition-smooth"
+                      placeholder="e.g. 1234567890"
                       required
                     />
                   </div>
@@ -311,9 +324,8 @@ const ApplicationForm = () => {
                     required
                   >
                     <option value="">Select your budget range</option>
-                    <option value="500-1000">500 - 1,000/month</option>
-                    <option value="1000-2000">1,000 - 2,000/month</option>
-                    <option value="2000+">2,000+/month</option>
+                    <option value="500-1000">4000/3-month</option>
+                    <option value="1000-2000">7000/6-month</option>
                     <option value="discuss">Let's discuss</option>
                   </select>
                 </div>

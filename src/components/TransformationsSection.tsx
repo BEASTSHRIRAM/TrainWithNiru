@@ -1,24 +1,23 @@
 import { useState } from 'react';
-import transformation1 from '@/assets/transformation-1.jpg';
-import transformation2 from '@/assets/transformation-2.jpg';
-import transformation3 from '@/assets/transformation-3.jpg';
 import transform1 from '@/assets/transform1.jpg';
 import transform2 from '@/assets/transform2.jpg';
 
 const TransformationsSection = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  // track current image index for each transformation card
+  const [imageIndexes, setImageIndexes] = useState<Record<number, number>>({});
 
   const transformations = [
     {
-      image: transform1,
+      images: [transform1],
       client: '',
       result: 'Dropped 18kg in 4 months',
       testimonial: 'The transformation was not just physical but mental. The support and science-driven plan made all the difference.',
-      stats: '18kg lost • 10% body fat reduced • Renewed energy'
+      stats: '4kg lost in 3 weeks • 3% body fat reduced • Renewed energy'
     },
     {
-      image: transform2,
-      client: 'Nishant Kn.',
+      images: [transform2, '/img8.jpg', '/img9.jpg' /* , '/your-extra-image.jpg' */],
+      client: '',
       result: 'Gained strength & confidence',
       testimonial: 'I never thought I could feel this strong. Every session was motivating and tailored to my needs.',
       stats: 'Strength doubled • Confidence boosted • Healthier lifestyle'
@@ -50,26 +49,77 @@ const TransformationsSection = () => {
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              {/* Image */}
+              {/* Image (carousel when multiple images provided) */}
               <div className="relative h-116 overflow-hidden">
-                <img 
-                  src={transformation.image} 
-                  alt={`${transformation.client} transformation`}
-                  className={`w-full h-full object-cover transition-smooth ${
-                    hoveredCard === index ? 'scale-110' : 'scale-100'
-                  }`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                
-                {/* Client Name Overlay */}
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h4 className="font-montserrat font-bold text-lg">
-                    {transformation.client}
-                  </h4>
-                  <p className="text-primary font-semibold">
-                    {transformation.result}
-                  </p>
-                </div>
+                {(() => {
+                  const imgs: string[] = (transformation as any).images || [];
+                  const len = imgs.length;
+                  const rawIndex = imageIndexes[index] ?? 0;
+                  const currentIndex = len ? Math.min(rawIndex, len - 1) : 0;
+                  const current = len ? imgs[currentIndex] : transform1; // fallback to a local image if none provided
+                  return (
+                    <>
+                      <img
+                        src={current}
+                        alt={`${transformation.client} transformation`}
+                        className={`w-full h-full object-cover transition-smooth ${
+                          hoveredCard === index ? 'scale-110' : 'scale-100'
+                        }`}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
+                      {/* Left / Right arrows */}
+                      {imgs.length > 1 && (
+                        <>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setImageIndexes(prev => ({
+                                ...prev,
+                                [index]: (currentIndex - 1 + imgs.length) % imgs.length
+                              }));
+                            }}
+                            className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2"
+                            aria-label="Previous image"
+                          >
+                            ‹
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setImageIndexes(prev => ({
+                                ...prev,
+                                [index]: (currentIndex + 1) % imgs.length
+                              }));
+                            }}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2"
+                            aria-label="Next image"
+                          >
+                            ›
+                          </button>
+
+                          {/* indicator */}
+                          <div className="absolute right-3 bottom-3 bg-black/40 text-white text-xs px-2 py-1 rounded">
+                            {currentIndex + 1}/{imgs.length}
+                          </div>
+                        </>
+                      )}
+
+                      {/* Client Name Overlay */}
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <h4 className="font-montserrat font-bold text-lg">
+                          {transformation.client}
+                        </h4>
+                        <p className="text-primary font-semibold">
+                          {transformation.result}
+                        </p>
+                      </div>
+                    </>
+                  );
+                })()}
               </div>
 
               {/* Content */}
