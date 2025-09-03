@@ -16,6 +16,7 @@ const JourneySection = () => {
     '/img5.jpg',
     '/img6.jpg',
     '/img7.jpg',
+    '/img10.jpg',
   ];
   const [current, setCurrent] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);

@@ -11,7 +11,7 @@ const TransformationsSection = () => {
     {
       images: [transform1],
       client: '',
-      result: 'Dropped 18kg in 4 months',
+      result: 'Dropped 4kg in 3 weeks',
       testimonial: 'The transformation was not just physical but mental. The support and science-driven plan made all the difference.',
       stats: '4kg lost in 3 weeks • 3% body fat reduced • Renewed energy'
     },
